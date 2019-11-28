@@ -2,11 +2,13 @@ plugins {
 	id 'org.springframework.boot' version '2.2.1.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id 'groovy'
 }
 
 group = 'com.mpescarmona.earthquake'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
 	mavenCentral()
@@ -19,16 +21,11 @@ dependencies {
 	// Lombok support
 	compileOnly 'org.projectlombok:lombok:1.18.10'
 	annotationProcessor 'org.projectlombok:lombok:1.18.10'
-	// Groovy
-	compile 'org.codehaus.groovy:groovy-all:2.4.17'
 	// Spock
-	testCompile 'org.spockframework:spock-core:1.3-groovy-2.4'
-	testCompile 'org.spockframework:spock-spring:1.3-groovy-2.4'
-	testRuntime 'cglib:cglib-nodep:3.2.4'
-	// Spring boot test starter
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	testCompile 'org.spockframework:spock-core:1.3-groovy-2.5'
+	testCompile 'org.spockframework:spock-spring:1.3-groovy-2.5'
+	testRuntime 'cglib:cglib-nodep:3.2.12'
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	// Spring security tests
 	testImplementation 'org.springframework.security:spring-security-test'
 }
