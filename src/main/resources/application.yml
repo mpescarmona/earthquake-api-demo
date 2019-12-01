@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /earthquake-service
+
+logging:
+  level:
+    org.springframework: INFO
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+earthquake:
+  baseUrl: https://earthquake.usgs.gov/fdsnws/event/1/query
+  format: format=geojson
+  searchByDatesStartTime: starttime
+  searchByDatesEndTime: endtime
+  searchByMagnitudesMinMagnitude: minmagnitude
+  searchByMagnitudesMaxMagnitude: maxmagnitude
