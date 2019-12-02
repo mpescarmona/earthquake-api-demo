@@ -45,7 +45,7 @@ class EarthquakeServiceImplTest extends Specification {
         response.metadata.count == 1
     }
 
-    def "GetEarthquakesByMagnitudeRanges"() {
+    def "GetEarthquakesByMagnitudeRange"() {
         given:
         EarthquakeResponse response
         String minMagnitude = "6.1"
@@ -73,7 +73,7 @@ class EarthquakeServiceImplTest extends Specification {
         EarthquakeResponse earthQuakeResponse = buildEarthquakeResponse(features);
         restTemplate.exchange(url, HttpMethod.GET, _, EarthquakeResponse.class) >> new ResponseEntity(earthQuakeResponse, HttpStatus.OK)
 
-        response = earthquakeService.getEarthquakesByMagnitudeRanges(minMagnitude, maxMagnitude)
+        response = earthquakeService.getEarthquakesByMagnitudeRange(minMagnitude, maxMagnitude)
 
         then:
         response != null

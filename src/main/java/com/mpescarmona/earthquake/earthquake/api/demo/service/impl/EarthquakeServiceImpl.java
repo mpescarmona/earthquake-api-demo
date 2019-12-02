@@ -66,7 +66,7 @@ public class EarthquakeServiceImpl implements IEarthquakeService {
     }
 
     @Override
-    public EarthquakeResponse getEarthquakesByMagnitudeRanges(String minMagnitude, String maxMagnitude) {
+    public EarthquakeResponse getEarthquakesByMagnitudeRange(String minMagnitude, String maxMagnitude) {
         log.info("action=getEarthquakesByMagnitudeRanges, minMagnitude={}, maxMagnitude={}", minMagnitude, maxMagnitude);
         String url = earthquakeUrlHelper.buildEarthquakeUrlByMagnitudes(minMagnitude, maxMagnitude);
         log.info("action=getEarthquakesByMagnitudeRanges, url={}", url);
@@ -103,7 +103,7 @@ public class EarthquakeServiceImpl implements IEarthquakeService {
             log.error("action=getEarthquakesByCountry, error={}", ex.getMessage());
         }
         List<Feature> filteredFeatures = earthquakeResponse.getFeatures().stream()
-                .filter(feature -> feature.getProperties().getPlace().contains(country))
+                .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(country.toLowerCase()))
                 .collect(Collectors.toList());
 
         earthquakeResponse.setFeatures(filteredFeatures);
@@ -118,8 +118,8 @@ public class EarthquakeServiceImpl implements IEarthquakeService {
         EarthquakeResponse response = getEarthquakesByDateRange(startTime, endTime);
 
         List<Feature> filteredFeatures = response.getFeatures().stream()
-                .filter(feature -> feature.getProperties().getPlace().contains(countryOne) ||
-                        feature.getProperties().getPlace().contains(countryTwo))
+                .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(countryOne.toLowerCase()) ||
+                        feature.getProperties().getPlace().toLowerCase().contains(countryTwo.toLowerCase()))
                 .collect(Collectors.toList());
 
         response.setFeatures(filteredFeatures);
