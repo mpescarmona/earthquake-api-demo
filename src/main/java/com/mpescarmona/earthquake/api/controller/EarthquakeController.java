@@ -1,7 +1,7 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.controller;
+package com.mpescarmona.earthquake.api.controller;
 
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.response.EarthquakeResponse;
-import com.mpescarmona.earthquake.earthquake.api.demo.service.IEarthquakeService;
+import com.mpescarmona.earthquake.api.domain.response.EarthquakeResponse;
+import com.mpescarmona.earthquake.api.service.IEarthquakeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

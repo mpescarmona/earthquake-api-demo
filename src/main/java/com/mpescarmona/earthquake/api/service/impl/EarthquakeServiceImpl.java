@@ -1,9 +1,9 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.service.impl;
+package com.mpescarmona.earthquake.api.service.impl;
 
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Feature;
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.response.EarthquakeResponse;
-import com.mpescarmona.earthquake.earthquake.api.demo.helper.EarthquakeUrlHelper;
-import com.mpescarmona.earthquake.earthquake.api.demo.service.IEarthquakeService;
+import com.mpescarmona.earthquake.api.domain.Feature;
+import com.mpescarmona.earthquake.api.domain.response.EarthquakeResponse;
+import com.mpescarmona.earthquake.api.helper.EarthquakeUrlHelper;
+import com.mpescarmona.earthquake.api.service.IEarthquakeService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.configuration;
+package com.mpescarmona.earthquake.api.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

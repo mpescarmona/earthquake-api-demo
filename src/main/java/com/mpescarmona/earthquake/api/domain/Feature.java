@@ -1,4 +1,4 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.domain;
+package com.mpescarmona.earthquake.api.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

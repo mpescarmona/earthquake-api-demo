@@ -1,6 +1,6 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.service;
+package com.mpescarmona.earthquake.api.service;
 
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.response.EarthquakeResponse;
+import com.mpescarmona.earthquake.api.domain.response.EarthquakeResponse;
 
 public interface IEarthquakeService {
     /**

@@ -1,11 +1,10 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.controller
+package com.mpescarmona.earthquake.api.controller
 
-
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Feature
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Metadata
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Properties
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.response.EarthquakeResponse
-import com.mpescarmona.earthquake.earthquake.api.demo.service.IEarthquakeService
+import com.mpescarmona.earthquake.api.domain.Feature
+import com.mpescarmona.earthquake.api.domain.Metadata
+import com.mpescarmona.earthquake.api.domain.Properties
+import com.mpescarmona.earthquake.api.domain.response.EarthquakeResponse
+import com.mpescarmona.earthquake.api.service.IEarthquakeService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.TestConfiguration

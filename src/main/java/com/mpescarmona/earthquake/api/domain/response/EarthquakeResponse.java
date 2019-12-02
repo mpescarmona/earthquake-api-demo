@@ -1,7 +1,7 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.domain.response;
+package com.mpescarmona.earthquake.api.domain.response;
 
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Feature;
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Metadata;
+import com.mpescarmona.earthquake.api.domain.Feature;
+import com.mpescarmona.earthquake.api.domain.Metadata;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

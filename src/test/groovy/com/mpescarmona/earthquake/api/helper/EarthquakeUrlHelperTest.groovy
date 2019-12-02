@@ -1,4 +1,4 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.helper
+package com.mpescarmona.earthquake.api.helper
 
 import spock.lang.Specification
 import spock.lang.Unroll

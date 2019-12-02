@@ -1,10 +1,10 @@
-package com.mpescarmona.earthquake.earthquake.api.demo.service.impl
+package com.mpescarmona.earthquake.api.service.impl
 
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Feature
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Metadata
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.Properties
-import com.mpescarmona.earthquake.earthquake.api.demo.domain.response.EarthquakeResponse
-import com.mpescarmona.earthquake.earthquake.api.demo.helper.EarthquakeUrlHelper
+import com.mpescarmona.earthquake.api.domain.Feature
+import com.mpescarmona.earthquake.api.domain.Metadata
+import com.mpescarmona.earthquake.api.domain.Properties
+import com.mpescarmona.earthquake.api.domain.response.EarthquakeResponse
+import com.mpescarmona.earthquake.api.helper.EarthquakeUrlHelper
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
