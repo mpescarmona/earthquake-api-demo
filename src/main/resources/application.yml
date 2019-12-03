@@ -18,3 +18,7 @@ earthquake:
   searchByDatesEndTime: endtime
   searchByMagnitudesMinMagnitude: minmagnitude
   searchByMagnitudesMaxMagnitude: maxmagnitude
+
+jwt:
+  secret: javainuse
+  user: testuser

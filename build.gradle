@@ -18,6 +18,8 @@ dependencies {
 	// Spring boot starters
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// JSON Web Token support
+	compile 'io.jsonwebtoken:jjwt:0.9.1'
 	// Lombok support
 	compileOnly 'org.projectlombok:lombok:1.18.10'
 	annotationProcessor 'org.projectlombok:lombok:1.18.10'
