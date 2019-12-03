@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "HackerNews Controller")
+@Api(value = "Earthquake Controller")
 @Slf4j
 @RestController
 @AllArgsConstructor
