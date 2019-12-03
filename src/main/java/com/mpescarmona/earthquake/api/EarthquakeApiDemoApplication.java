@@ -1,4 +1,4 @@
-package com.mpescarmona.earthquake.earthquake.api.demo;
+package com.mpescarmona.earthquake.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
