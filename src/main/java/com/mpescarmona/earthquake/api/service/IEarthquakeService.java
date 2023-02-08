@@ -52,4 +52,18 @@ public interface IEarthquakeService {
      */
     EarthquakeResponse getEarthquakesByCountriesAndDateRange(String countryOne, String countryTwo,
                                                              String startTime, String endTime);
+
+    /**
+     * Gets earthquakes by date range, magnitude range, and country
+     *
+     * @param startTime    The start date of range
+     * @param endTime      The end date of range
+     * @param minMagnitude The first magnitude of range
+     * @param maxMagnitude The second magnitude of range
+     * @param country      The country
+     * @return The earthquake response containing the earthquakes. @See {@link EarthquakeResponse}
+     */
+    EarthquakeResponse getEarthquakesByDateRangeAndMagnitudeRangeAndCountry(String startTime, String endTime,
+                                                                             String minMagnitude, String maxMagnitude,
+                                                                             String country);
 }

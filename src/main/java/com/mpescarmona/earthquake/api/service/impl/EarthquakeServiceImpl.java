@@ -129,6 +129,36 @@ public class EarthquakeServiceImpl implements IEarthquakeService {
         return response;
     }
 
+    @Override
+    public EarthquakeResponse getEarthquakesByDateRangeAndMagnitudeRangeAndCountry(String startTime, String endTime,
+                                                                                   String minMagnitude, String maxMagnitude,
+                                                                                   String country) {
+        log.info("action=getEarthquakesByDateRangeAndMagnitudeRangeAndCountry, startTime={}, endTime={}, " +
+                "minMagnitude={}, maxMagnitude={}, country={}", startTime, endTime, minMagnitude, maxMagnitude, country);
+        String url = earthquakeUrlHelper.buildEarthquakeUrlByDatesAndMagnitudes(startTime, endTime, minMagnitude, maxMagnitude);
+        log.info("action=getEarthquakesByDateRangeAndMagnitudeRangeAndCountry, url={}", url);
+        EarthquakeResponse earthquakeResponse = null;
+        try {
+            ResponseEntity<EarthquakeResponse> response = callEarthquakeService(url);
+
+            if (response.getStatusCode().is2xxSuccessful()) {
+                earthquakeResponse = response.getBody();
+            }
+
+            log.info("action=getEarthquakesByDateRangeAndMagnitudeRangeAndCountry, result={}", response);
+        } catch (Exception ex) {
+            log.error("action=getEarthquakesByDateRangeAndMagnitudeRangeAndCountry, error={}", ex.getMessage());
+        }
+        List<Feature> filteredFeatures = earthquakeResponse.getFeatures().stream()
+                .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(country.toLowerCase()))
+                .collect(Collectors.toList());
+
+        earthquakeResponse.setFeatures(filteredFeatures);
+        earthquakeResponse.getMetadata().setCount(filteredFeatures.size());
+
+        return earthquakeResponse;
+    }
+
     private HttpEntity<String> buildEarthquakeRequestHeader() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -137,6 +167,7 @@ public class EarthquakeServiceImpl implements IEarthquakeService {
 
     private ResponseEntity<EarthquakeResponse> callEarthquakeService(String url) {
         HttpEntity<String> entity = buildEarthquakeRequestHeader();
+        log.info("action=callEarthquakeService, url={}", url);
         return restTemplate.exchange(url, HttpMethod.GET, entity, EarthquakeResponse.class);
     }
 }
