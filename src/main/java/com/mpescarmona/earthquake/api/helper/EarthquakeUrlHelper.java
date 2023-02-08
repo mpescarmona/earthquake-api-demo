@@ -86,4 +86,44 @@ public class EarthquakeUrlHelper {
 
         return sb.toString();
     }
+
+    /**
+     * Builds the url used to get data by date ranges and magnitude ranges from EarthQuake USGS service
+     *
+     * @param startTime The start date value string
+     * @param endTime   The end date value string
+     * @param minMagnitude The minimum magnitude string
+     * @param maxMagnitude The maximum magnitude string
+     * @return The fully composed url string to be used against the EarthQuake USGS service
+     */
+    public String buildEarthquakeUrlByDatesAndMagnitudes(String startTime, String endTime, String minMagnitude, String maxMagnitude) {
+        StringBuilder sb = getEarthQuakeBaseUrlAndFormatStringBuilder();
+        if (searchByDatesStartTime != null && startTime != null) {
+            sb.append(sb.indexOf("?") == -1 ? "?" : "&")
+                    .append(searchByDatesStartTime)
+                    .append("=")
+                    .append(startTime);
+        }
+        if (searchByDatesEndTime != null && endTime != null) {
+            sb.append(sb.indexOf("?") == -1 ? "?" : "&")
+                    .append(searchByDatesEndTime)
+                    .append("=")
+                    .append(endTime);
+        }
+        if (searchByMagnitudesMinMagnitude != null && minMagnitude != null) {
+            sb.append(sb.indexOf("?") == -1 ? "?" : "&")
+                    .append(searchByMagnitudesMinMagnitude)
+                    .append("=")
+                    .append(minMagnitude);
+        }
+        if (searchByMagnitudesMaxMagnitude != null && maxMagnitude != null) {
+            sb.append(sb.indexOf("?") == -1 ? "?" : "&")
+                    .append(searchByMagnitudesMaxMagnitude)
+                    .append("=")
+                    .append(maxMagnitude);
+        }
+
+        return sb.toString();
+    }
+
 }
