@@ -8,13 +8,19 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -102,12 +108,16 @@ public class EarthquakeServiceImpl implements IEarthquakeService {
         } catch (Exception ex) {
             log.error("action=getEarthquakesByCountry, error={}", ex.getMessage());
         }
-        List<Feature> filteredFeatures = earthquakeResponse.getFeatures().stream()
-                .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(country.toLowerCase()))
-                .collect(Collectors.toList());
 
-        earthquakeResponse.setFeatures(filteredFeatures);
-        earthquakeResponse.getMetadata().setCount(filteredFeatures.size());
+        if (Optional.ofNullable(earthquakeResponse).isPresent()) {
+            List<Feature> filteredFeatures = earthquakeResponse.getFeatures().stream()
+                    .filter(feature -> Objects.nonNull(feature.getProperties()))
+                    .filter(feature -> Objects.nonNull(feature.getProperties().getPlace()))
+                    .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(country.toLowerCase()))
+                    .collect(Collectors.toList());
+            earthquakeResponse.setFeatures(filteredFeatures);
+            earthquakeResponse.getMetadata().setCount(filteredFeatures.size());
+        }
 
         return earthquakeResponse;
     }
@@ -117,13 +127,16 @@ public class EarthquakeServiceImpl implements IEarthquakeService {
         log.info("action=getEarthquakesByCountriesAndDateRange, countryOne={}, countryTwo={}, startTime={}, endTime={}", countryOne, countryTwo, startTime, endTime);
         EarthquakeResponse response = getEarthquakesByDateRange(startTime, endTime);
 
-        List<Feature> filteredFeatures = response.getFeatures().stream()
-                .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(countryOne.toLowerCase()) ||
-                        feature.getProperties().getPlace().toLowerCase().contains(countryTwo.toLowerCase()))
-                .collect(Collectors.toList());
-
-        response.setFeatures(filteredFeatures);
-        response.getMetadata().setCount(filteredFeatures.size());
+        if (Optional.ofNullable(response).isPresent()) {
+            List<Feature> filteredFeatures = response.getFeatures().stream()
+                    .filter(feature -> Objects.nonNull(feature.getProperties()))
+                    .filter(feature -> Objects.nonNull(feature.getProperties().getPlace()))
+                    .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(countryOne.toLowerCase()) ||
+                            feature.getProperties().getPlace().toLowerCase().contains(countryTwo.toLowerCase()))
+                    .collect(Collectors.toList());
+            response.setFeatures(filteredFeatures);
+            response.getMetadata().setCount(filteredFeatures.size());
+        }
 
         log.info("action=getEarthquakesByCountriesAndDateRange, result={}", response);
         return response;
@@ -149,12 +162,16 @@ public class EarthquakeServiceImpl implements IEarthquakeService {
         } catch (Exception ex) {
             log.error("action=getEarthquakesByDateRangeAndMagnitudeRangeAndCountry, error={}", ex.getMessage());
         }
-        List<Feature> filteredFeatures = earthquakeResponse.getFeatures().stream()
-                .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(country.toLowerCase()))
-                .collect(Collectors.toList());
 
-        earthquakeResponse.setFeatures(filteredFeatures);
-        earthquakeResponse.getMetadata().setCount(filteredFeatures.size());
+        if (Optional.ofNullable(earthquakeResponse).isPresent()) {
+            List<Feature> filteredFeatures = earthquakeResponse.getFeatures().stream()
+                    .filter(feature -> Objects.nonNull(feature.getProperties()))
+                    .filter(feature -> Objects.nonNull(feature.getProperties().getPlace()))
+                    .filter(feature -> feature.getProperties().getPlace().toLowerCase().contains(country.toLowerCase()))
+                    .collect(Collectors.toList());
+            earthquakeResponse.setFeatures(filteredFeatures);
+            earthquakeResponse.getMetadata().setCount(filteredFeatures.size());
+        }
 
         return earthquakeResponse;
     }
